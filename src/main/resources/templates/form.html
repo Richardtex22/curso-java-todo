@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title th:text="${titulo}"></title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" th:href="@{/index}">Inicio</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active"><a class="nav-link"
+					th:href="@{/listar}">Lista <span class="sr-only">(current)</span></a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<div class="container">
+		<h1 class="text-secondary border-top-10" th:text="${put}"></h1>
+
+		<form th:action="@{/form}" th:object="${item}" method="post">
+			<table>
+
+
+				<tr>
+					<td>Tarea</td>
+					<td><input type="text" th:field="*{task}" class="form-control" /></td>
+				</tr>
+				<tr>
+					<td>Descripción</td>
+					<td><input type="text" th:field="*{description}" class="form-control" /></td>
+				</tr>
+				<tr>
+					<td><input type="submit" value="Guardar Tarea" class="btn btn-secondary" /></td>
+				</tr>
+			</table>
+			<input type="hidden" th:field="*{id}" />
+		</form>
+	</div>
+</body>
+</html>

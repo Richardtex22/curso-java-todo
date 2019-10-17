@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title th:text="${titulo}"></title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+			
+				<li><a class="navbar-brand" th:href="@{/inicio}">Inicio</a></li>
+
+				<li class="nav-item active"><a class="nav-link"
+					th:href="@{/listar}">Lista <span class="sr-only">(current)</span></a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="container">
+		<h1 class="text-secondary border-top-10 " th:text="TodoApp"></h1>
+		
+		<p><a class="btn btn-success btn-xs"th:href="@{/form}">Nueva Tarea</a></p>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>id</th>
+					<th>task</th>
+					<th>description</th>
+					<th>date</th>
+					<th>eliminar</th>					
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="item: ${items}">
+					<td th:text="${item.id}"></td>
+					<td th:text="${item.task}"></td>
+					<td th:text="${item.description}"></td>
+					<td th:text="${item.createAt}"></td>
+					<td><a class="btn btn-danger btn-xs" th:href="@{/eliminar/} + ${item.id}" th:text="Eliminar" onclick="return confirm('Estas seguro de eliminarla?');"></a></td>
+				</tr>
+			</tbody>
+	
+	</table>
+	</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
